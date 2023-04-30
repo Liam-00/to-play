@@ -2,4 +2,5 @@
     margin-top: 4rem;
     width: 15%;
     max-width: 15rem;
+    flex-shrink: 0;
 }

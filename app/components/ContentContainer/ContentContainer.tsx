@@ -1,6 +1,10 @@
+import style from './ContentContainer.module.css'
+
 let ContentContainer = ({children,}: {children: React.ReactNode}) => {
     return (
-        <div>{children}</div>
+        <div className={`${style.ContentContainer_Body}`}>
+            {children}
+        </div>
     )
 }
 

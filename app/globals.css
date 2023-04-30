@@ -13,6 +13,7 @@
 body, html {
   margin:0;
   background: rgb(35, 35, 35);
+  height: 100vh;
 }
 
 .Text__PrimaryInterface {

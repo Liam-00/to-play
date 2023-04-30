@@ -16,15 +16,15 @@ export default function RootLayout( {children,}: {children: React.ReactNode} ) {
   return (
     <html lang="en">
       <body className={style.app__body}>
-        <NavContainer>
-          <NavContainer__ProfileBar/>
-          <NavContainer__NavBar/>
-        </NavContainer>
-        
-        <ContentContainer>
-          {children}
-        </ContentContainer>
+          <NavContainer>
+            <NavContainer__ProfileBar/>
+            <NavContainer__NavBar/>
+          </NavContainer>
+          
+          <ContentContainer>
+            {children}
+          </ContentContainer>
       </body>
     </html>
   )
-}
+} 
