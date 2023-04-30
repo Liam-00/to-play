@@ -1,0 +1,38 @@
+.NavContainer__button_body {
+    height: 2.5rem;
+    width: 80%;
+    
+    display:flex;
+    align-items: center;
+
+    padding-left: 1rem;
+
+    border-width: 1px 1px 1px 0px;
+    border-color: var(--ui_border);
+    border-style: solid;
+    
+    background-color: var(--ui_background);
+}
+
+.NavContainer__button_body:first-of-type {
+    border-radius: 0 2rem 0 0;
+    border-bottom:0px;
+    background-color: var(--ui_background);
+}
+
+.NavContainer__button_body:last-of-type {
+    border-radius: 0 0 2rem 0;
+    border-top: 0px;
+    background-color: var(--ui_background);
+}
+
+.NavContainer__button_body:hover {
+    background-color: var(--ui_background-hover);
+    text-decoration: underline;
+    color: var(--ui_highlight);
+    cursor: pointer;
+}
+
+.NavContainer__button_body:active {
+    background-color: var(--ui_background-active)
+}

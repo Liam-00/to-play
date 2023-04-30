@@ -1,0 +1,45 @@
+.ProfileBar__Body {
+    display:flex;
+    justify-content: space-between;
+    
+    height: 4rem;
+
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+
+    background-color: var(--ui_background);
+
+    font-size: 1rem;
+
+    border-radius: 0rem 100px 100px 0rem;
+    border-width: 1px 1px 1px 0px;
+    border-color: var(--ui_border);
+    border-style: solid;
+}   
+
+.ProfileBar__TextCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ProfileBar__TextRow {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.ProfileBar__Icon {
+    height: 4rem;
+    width: 4rem;
+    align-self: center;
+
+    background: blue;
+    border-radius: 50%;
+}
+
+.ProfileBar__Text_NameTitle {
+    font-size: 1rem;
+    color: var(--ui_text-color);
+    font-family: Helvetica;
+}
