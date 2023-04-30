@@ -9,7 +9,7 @@
 
     border-width: 1px 1px 1px 0px;
     border-color: var(--ui_border);
-    border-style: solid;
+    border-style:solid;
     
     background-color: var(--ui_background);
 }
