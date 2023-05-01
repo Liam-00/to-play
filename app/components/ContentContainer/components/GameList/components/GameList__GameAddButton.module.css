@@ -1,0 +1,41 @@
+.GameAddButton__Body {
+    max-height: 33%;
+    max-width: 33%;
+
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 40px;
+    padding: 0.3rem;
+
+    background-color: var(--ui_background)
+}
+
+.GameAddButton__Body:hover {
+    background-color: var(--ui_background-hover);
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.GameAddButton__Body:Active {
+    background-color: var(--ui_background-active)
+}
+
+.GameAddButton__Inner {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    
+    justify-content: center;
+    align-items:center;
+
+    border-radius: 35px;
+    
+    border: 1px solid var(--ui_border)
+}
+
+

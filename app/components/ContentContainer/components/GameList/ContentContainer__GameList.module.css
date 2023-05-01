@@ -1,0 +1,6 @@
+.ContentContainer__GameList_Body {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
