@@ -1,6 +1,8 @@
 .ContentContainer__GameList_Body {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: grid;
+    width: 100%;
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) );
+    
+    justify-content: center;
 }
