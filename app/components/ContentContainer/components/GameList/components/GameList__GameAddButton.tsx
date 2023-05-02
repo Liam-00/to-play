@@ -1,12 +1,13 @@
 import style from './GameList__GameAddButton.module.css'
+import buttonStyle from './GameList__GameAddButton.module.css'
+import GameList__Card from './GameList__Card'
+
 
 const GameList__GameAddButton = () => {
     return (
-        <div className={`${style.GameAddButton__Body}`}>
-            <div className={`${style.GameAddButton__Inner}`}>
+        <GameList__Card innerClass={`${buttonStyle.GameAddButton__Inner}`}>
                 <span className={`Text__PrimaryInterface`}>ADD GAME!</span>
-            </div>
-        </div>
+        </GameList__Card>
     )
 }
 
