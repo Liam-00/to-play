@@ -3,6 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-style: dashed;
+    border-width: 2px;
 }
 
 .GameAddButton__Inner:hover {
