@@ -1,0 +1,55 @@
+.GameCard__Inner {
+    display: flex;
+    background-color: #26345b;
+    position: relative;
+}
+
+.GameCard__InfoColumn {
+    
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 10px;
+
+}
+
+.GameCard__InfoColumn::-webkit-scrollbar {
+    width: 12px;
+}
+.GameCard__InfoColumn::-webkit-scrollbar-thumb {
+    
+    background-color: var(--ui_border);
+    border-radius: 0px;
+}
+
+.GameCard__ImageFrame {
+    position: relative;
+    flex-shrink:0;
+}
+
+.GameCard__Image {
+    height: 100%;
+    width: auto;
+}
+
+.GameCard__TitleText {
+    font-size: 1.2rem;
+    font-family: Tahoma;
+    font-weight: bold;
+    color: var(--ui_text-color);
+    word-wrap: break-word;
+    border-bottom: 1px solid var(--ui_border);
+    text-shadow: 6px 6px 3px hsla(0, 0%, 0%, 30%);
+}
+
+.GameCard_GenreBlock {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.GameCard__InfoField {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,10 @@
+.Genre__Body {
+    font-family: Helvetica;
+    font-weight: bold;
+    color:rgb(39, 39, 39);
+    font-size: 0.8rem;
+    padding: 4px;
+    border-radius: 2px;
+    white-space: nowrap;
+    box-shadow: 6px 6px 3px hsla(0, 0%, 0%, 30%);
+}

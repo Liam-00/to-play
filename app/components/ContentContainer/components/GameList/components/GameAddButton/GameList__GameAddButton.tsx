@@ -1,6 +1,6 @@
 import style from './GameList__GameAddButton.module.css'
 import buttonStyle from './GameList__GameAddButton.module.css'
-import GameList__Card from './GameList__Card'
+import GameList__Card from '../shared/GameList__Card'
 
 
 const GameList__GameAddButton = () => {

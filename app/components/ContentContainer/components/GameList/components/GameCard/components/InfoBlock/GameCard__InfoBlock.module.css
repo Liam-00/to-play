@@ -1,0 +1,27 @@
+.InfoBlock__Body {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.InfoBlock__Content {
+    color: var(--ui_text-color);
+    font-family: Verdana;
+    letter-spacing: 0.03rem;
+    font-size: 0.8rem;
+    background-color:hsla(0, 0%, 0%, 20%);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0px;
+    word-wrap: break-word;
+}
+
+.InfoBlock__Label {
+    font-family: Verdana;
+    font-size: 0.6rem;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+    color: var(--ui_text-secondary-color);
+    text-shadow: 3px 3px 3px hsla(0, 0%, 0%, 30%);
+    margin-bottom: 2px;
+}
