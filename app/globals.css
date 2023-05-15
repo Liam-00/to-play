@@ -4,36 +4,24 @@
 }
 
 :root{
-  --ui_background: hsla(237, 28%, 15%, 30%);
-  --ui_background-active: hsla(237, 28%, 30%, 30%);
-  --ui_background-hover: hsla(237, 28%, 40%, 30%);
-  --ui_highlight: hsl(180, 100%, 89%);
-  --ui_border: hsla(215, 100%, 86%, 0.5);
-  --ui_text-color: hsl(0, 0%, 95%);
-  --ui_text-secondary-color:  hsl(0, 0%, 65%)
 
+  --col_page-color: #393e4a;
+  --col_bg: hsl(240, 20%, 12%);
+  --col_bg-hover: hsl(231, 20%, 18%);
+  --col_bg-active: hsl(231, 20%, 22%);
+  --col_border: rgb(200, 166, 111);
+  --col_text-base: rgb(230, 230, 230);
+  --col_text-highlight: rgb(170, 245, 255);
+  --col_card-bg: #26345b;
 }
 
 body, html {
   margin:0;
-  background: rgb(53, 53, 53);
+  background: var(--col_page-color);
   height: 100vh;
   font-size: 0.9rem;
-}
+  font-family: verdana;
+  letter-spacing: 0.1rem;
+  color: var(--col_text-base)
 
-.Text__PrimaryInterface {
-  
-  letter-spacing: 0.2rem;
-  font-family: Tahoma;
-  color: var(--ui_text-color);
-}
-
-.Text__SmallLink {
-  text-decoration: underline;
-  color: var(--ui_text-secondary-color);
-  font-size: 0.8rem;
-}
-.Text__SmallLink:hover {
-  cursor: pointer;
-  color: var(--ui_highlight)
 }

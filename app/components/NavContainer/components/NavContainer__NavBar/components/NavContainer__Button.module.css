@@ -8,31 +8,35 @@
     padding-left: 1rem;
 
     border-width: 1px 1px 1px 0px;
-    border-color: var(--ui_border);
+    border-color: var(--col_border);
     border-style:solid;
     
-    background-color: var(--ui_background);
+    background-color: var(--col_bg);
 }
 
 .NavContainer__button_body:first-of-type {
     border-radius: 0 2rem 0 0;
     border-bottom:0px;
-    background-color: var(--ui_background);
+    background-color: var(--col_bg);
 }
 
 .NavContainer__button_body:last-of-type {
     border-radius: 0 0 2rem 0;
     border-top: 0px;
-    background-color: var(--ui_background);
+    background-color: var(--col_bg);
 }
 
 .NavContainer__button_body:hover {
-    background-color: var(--ui_background-hover);
-    text-decoration: underline;
+    background-color: var(--col_bg-hover);
     color: var(--ui_highlight);
     cursor: pointer;
+    color: var(--col_text-highlight);
+
+    transform: scaleX(1.04);
+    transition-timing-function: linear;
+    transition-duration: 10ms;
 }
 
 .NavContainer__button_body:active {
-    background-color: var(--ui_background-active)
+    background-color: var(--col_bg-active)
 }

@@ -6,10 +6,10 @@ const NavContainer__ProfileBar = () => {
         <div className={`${style.ProfileBar__Body}`}>
             <div className={`${style.ProfileBar__TextCol}`}>
                 <span className={`${style.ProfileBar__Text_NameTitle}`}>User Name</span>
-                
+
                 <div className={`${style.ProfileBar__TextRow}`}>
-                    <span className={`Text__SmallLink`}>user settings</span>
-                    <span className={`Text__SmallLink`}>logout</span>
+                    <span className={`${style.ProfileBar__Text_SmallLink}`}>user settings</span>
+                    <span className={`${style.ProfileBar__Text_SmallLink}`}>logout</span>
                 </div>
             </div>
             <div className={`${style.ProfileBar__Icon}`}></div>
