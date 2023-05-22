@@ -4,15 +4,14 @@
     border-left: 0px;
     border-right: 0px;
     
-    margin: 10px;
-    padding: 10px;
+    padding-left: 1rem;
+    
     overflow-y: scroll;
     
 }
 
 .ContentContainer_Body::-webkit-scrollbar {
-    width: 12px;
-    background-color: rgb(66, 66, 66);
+    width: 1rem;
 }
 .ContentContainer_Body::-webkit-scrollbar-thumb {
     
