@@ -4,9 +4,11 @@ import NavContainer__Button from './components/NavContainer__Button'
 const NavContainer__Navbar = () => {
     return (
         <div className={style.Navbar_body}>
-            <NavContainer__Button content='GAME LIST'/>
-            <NavContainer__Button content='OTHER VIEWS'/>
-            <NavContainer__Button content='SETTINGS'/>
+            <NavContainer__Button content='GAME LIST' />
+            <div className={`${style.NavContainer__button_divider}`}></div>
+            <NavContainer__Button content='OTHER VIEWS' />
+            <div className={`${style.NavContainer__button_divider}`}></div>
+            <NavContainer__Button content='SETTINGS' />
         </div>
     )
 }
