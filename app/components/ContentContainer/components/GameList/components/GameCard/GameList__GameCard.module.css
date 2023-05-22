@@ -40,7 +40,7 @@
     color: var(--ui_text-color);
     word-wrap: break-word;
     border-bottom: 1px solid var(--col_border);
-    text-shadow: 6px 6px 3px hsla(0, 0%, 0%, 30%);
+    text-shadow: 0.2rem 0.2rem 0px hsla(0, 0%, 0%, 70%);
 }
 
 .GameCard_GenreBlock {
