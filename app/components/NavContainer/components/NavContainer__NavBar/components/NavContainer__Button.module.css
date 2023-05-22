@@ -1,40 +1,45 @@
 .NavContainer__button_body {
-    height: 2.5rem;
-    width: 80%;
+    box-sizing: content-box;
     
-    display:flex;
+    height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    flex-grow: 0;
     align-items: center;
+    width: 100%;
 
-    padding-left: 1rem;
+    margin-right: auto;
 
-    border-width: 1px 1px 1px 0px;
+    /*border-width: 1px 1px 1px 1px;
     border-color: var(--col_border);
     border-style:solid;
+    */
+    background-color: var(--col_bg);
+    border-radius: 0rem;
+
+    user-select: none;
+}
+
+.NavContainer__button_text {
+    border-bottom: 1px solid transparent;
+}
+
+
+
+@media(hover: hover) and (pointer: fine) {
+    .NavContainer__button_body:hover {
+        background-color: var(--col_bg-hover);
+        cursor: pointer;
+        
     
-    background-color: var(--col_bg);
-}
-
-.NavContainer__button_body:first-of-type {
-    border-radius: 0 2rem 0 0;
-    border-bottom:0px;
-    background-color: var(--col_bg);
-}
-
-.NavContainer__button_body:last-of-type {
-    border-radius: 0 0 2rem 0;
-    border-top: 0px;
-    background-color: var(--col_bg);
-}
-
-.NavContainer__button_body:hover {
-    background-color: var(--col_bg-hover);
-    color: var(--ui_highlight);
-    cursor: pointer;
-    color: var(--col_text-highlight);
-
-    transform: scaleX(1.04);
-    transition-timing-function: linear;
-    transition-duration: 10ms;
+        /*transform: scale(1.03);
+        transition-timing-function: linear;
+        transition-duration: 10ms;*/
+    }
+    .NavContainer__button_body:hover .NavContainer__button_text {
+        color: var(--col_text-highlight);
+        border-bottom: 1px solid var(--col_text-highlight);
+    }
 }
 
 .NavContainer__button_body:active {
