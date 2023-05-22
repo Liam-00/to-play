@@ -1,7 +1,7 @@
 .GameList__Card_Body {
     
     
-    height: 15rem;
+    height: 12rem;
 
     
     display: flex;
@@ -9,7 +9,7 @@
     align-items: center;
 
 
-    padding: 1rem;
+    padding: 0.5rem;
 
   
 }
