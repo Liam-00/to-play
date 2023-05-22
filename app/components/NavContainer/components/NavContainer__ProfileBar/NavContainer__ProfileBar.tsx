@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import ProfileBar__ToggleMenu from './components/ProfileBar__ToggleMenu'
+import NavContainer__Navbar from '../NavContainer__NavBar/NavContainer__NavBar'
 import style from './NavContainer__ProfileBar.module.css'
 
 const NavContainer__ProfileBar = () => {
@@ -13,6 +15,9 @@ const NavContainer__ProfileBar = () => {
                 </div>
             </div>
             <div className={`${style.ProfileBar__Icon}`}></div>
+            <ProfileBar__ToggleMenu>
+                <NavContainer__Navbar />
+            </ProfileBar__ToggleMenu>
         </div>
     )
 }

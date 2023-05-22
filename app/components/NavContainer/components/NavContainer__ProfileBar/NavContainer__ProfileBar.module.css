@@ -1,27 +1,28 @@
 .ProfileBar__Body {
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: center;
+    flex-grow: 0;
 
-    height: 5rem;
-
-    margin-bottom: 2rem;
-    padding: 0.5rem;
+    margin-bottom: 0rem;
+    padding: 1rem;
 
     background-color: var(--col_bg);
 
     font-size: 1rem;
-
-    border-radius: 0rem 100px 100px 0rem;
-    border-width: 2px 2px 2px 0px;
+    position: relative;
+    border-radius: 0.5rem;
+    border-width: 2px 2px 2px 2px;
     border-color: var(--col_border);
     border-style: solid;
 }   
 
 .ProfileBar__TextCol {
     display: flex;
+    align-items: left;
     flex-direction: column;
     justify-content: center;
+    gap: 0.5rem;
 }
 
 .ProfileBar__TextRow {
@@ -35,7 +36,7 @@
     height: 4rem;
     width: 4rem;
     align-self: center;
-
+    margin-left: 1rem;
     background: blue;
     border-radius: 50%;
 }
