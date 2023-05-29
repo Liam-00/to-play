@@ -6,13 +6,13 @@ import style from './ProfileBar__ToggleMenu.module.css'
 
 
 
-const ProfileBar__ToggleMenu = ({ children }: { children: React.ReactElement }) => {
+const ProfileBar__ToggleMenu = ({ children }: { children: React.ReactElement | React.ReactElement[] }) => {
     const [menuVisible, setMenuVisible] = useState(false)
 
     return (
         <>
             <div
-                className={`${style.ToggleMenu__Body}`}
+                className={`${style.ToggleMenu__Body} ${menuVisible ? style.highlight : ""}`}
                 onClick={() => { setMenuVisible(!menuVisible) }}
             >
                 <div className={`${style.ToggleMenu__Label}`}>
