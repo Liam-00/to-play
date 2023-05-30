@@ -1,0 +1,138 @@
+.ImageMenu__Wrapper {
+    position: relative;
+    height: 100%;
+    width: auto;
+}
+
+.ImageMenu__Image {
+    height: 100%;
+    width: auto;
+    
+    
+}
+
+.ImageMenu__MenuBody {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    padding: 0.5rem 0rem;
+
+    cursor: pointer;
+    z-index: 0;
+}
+
+.ImageMenu__StatusLabel {
+    background-color: grey;
+    font-size: 0.8rem;
+    color: black;
+
+    padding: 0.2rem;
+    
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
+
+    user-select: none;
+}
+
+.ImageMenu__StatusSelector {
+    position: absolute;
+    left: calc(100% + 0.8rem);
+
+    
+    bottom: 0;
+
+    background-color: var(--col_bg);
+    
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: var(--col_border);
+
+    width: 100%;
+
+    z-index: 0;
+
+    box-shadow: 0px 0px 0.5rem 0.1rem black;
+}
+
+.ImageMenu__SelectionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    padding: 0.5rem;
+
+    background-color: var(--col_bg); 
+}
+
+.ImageMenu__StatusSelector::after {
+    content:'';
+    
+    border: 1px solid var(--col_border);
+
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--col_bg);
+
+    transform: rotate(45deg);
+    transform-origin: center;
+
+    position: absolute;
+    left: calc(0px - 0.5rem);
+    bottom: calc(0.5rem);
+
+    z-index: -1;
+}
+
+
+.ImageMenu__StatusOption {
+    padding: 0.5rem;
+    border-left-width: 0.5rem;
+    border-left-style: solid;
+    
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .ImageMenu__StatusOption:hover {
+        background-color: var(--col_bg-hover);
+        cursor: pointer;
+    }
+    
+}
+
+.ImageMenu__StatusOption:active {
+    background-color: var(--col_bg-active)
+}
+
+.LabelCompleted {
+    background-color: var(--status_Completed);
+}
+
+.LabelUnplayed {
+    background-color: var(--status_Unplayed);
+}
+
+.LabelPlaying {
+    background-color: var(--status_Playing);
+}
+
+.Completed {
+    border-color:  var(--status_Completed);
+}
+
+.Unplayed {
+    border-color: var(--status_Unplayed);
+}
+
+.Playing {
+    border-color: var(--status_Playing);
+}
+
+.hidden {
+    display: none;
+}

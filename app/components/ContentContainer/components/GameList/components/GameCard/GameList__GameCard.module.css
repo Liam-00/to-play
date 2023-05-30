@@ -1,6 +1,5 @@
 .GameCard__Inner {
     display: flex;
-    background-color: var(--col_card-bg);
     position: relative;
 }
 
@@ -11,6 +10,7 @@
     flex-direction: column;
     overflow-y: scroll;
     gap: 10px;
+    background-color: var(--col_card-bg);
 
 }
 

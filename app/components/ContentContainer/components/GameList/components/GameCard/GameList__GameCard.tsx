@@ -1,6 +1,7 @@
 import GameList__Card from '../shared/GameList__Card'
 import GameCard__InfoBlock from './components/InfoBlock/GameCard__InfoBlock'
 import GameCard__Genre from './components/Genre/GameCard__Genre'
+import GameCard__ImageMenu from './components/ImageMenu/GameCard__ImageMenu'
 
 import videogame_type from '@/app/types/videogame_type'
 
@@ -14,9 +15,10 @@ const GameList__GameCard = ({ videogame }: { videogame: videogame_type }) => {
     return (
         <GameList__Card innerClass={`${style.GameCard__Inner}`}>
 
-
-            <img src={videogame.imageURL} alt="Image of game cover" className={`${style.GameCard__Image}`}></img>
-
+            <GameCard__ImageMenu ImageURL={videogame.imageURL} />
+            {/*<div>
+                <img src={videogame.imageURL} alt="Image of game cover" className={`${style.GameCard__Image}`}></img>
+    </div>*/}
 
 
             <div className={`${style.GameCard__InfoColumn}`}>
