@@ -1,0 +1,40 @@
+.ProfileBar__Body {
+    position: relative;
+    
+    display:flex;
+    justify-content: flex-start;
+    align-content: center;
+    
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+}   
+
+.ProfileBar__TextCol {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ProfileBar__TextRow {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem
+}
+
+.ProfileBar__Icon {
+    height: 3rem; width: 3rem;
+    background: blue;
+    border-radius: 50%;
+}
+
+.ProfileBar__Text_SmallLink {
+    font-size: 0.7rem;
+    border-bottom:1px solid var(--col_text-base);
+}
+
+.ProfileBar__Text_SmallLink:hover{
+    cursor: pointer;
+    color: var(--col_text-highlight);
+    border-color: var(--col_text-highlight);
+}

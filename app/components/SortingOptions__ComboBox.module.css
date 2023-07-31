@@ -1,0 +1,52 @@
+.ComboBox__Body {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    padding: 0.5rem;
+    box-sizing: border-box;
+
+    outline: 2px solid var(--col_page-color);
+    border-radius: 0.2rem;
+}
+
+.ComboBox__OptionsList {
+    
+
+    width: 100%;
+    
+    position: absolute;
+    z-index: 999;
+    
+    box-sizing: border-box;
+
+    top: calc(100% + 2px);
+    left: 0;
+
+    background-color: var(--col_bg);
+    outline: 2px solid var(--col_page-color);
+    border-radius: 0.2rem;
+}
+
+.ComboBox_Option_Body{
+    padding: 0.5rem;
+}
+
+.ComboBox_Option_Body:not(:first-of-type) {
+    border-top: 1px solid var(--col_page-color);
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .ComboBox_Option_Body:hover {
+        background-color: var(--col_bg-hover);
+        cursor: pointer;
+    }
+    
+}
+
+.hidden{
+    display: none;
+}

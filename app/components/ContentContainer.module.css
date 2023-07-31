@@ -1,0 +1,21 @@
+.ContentContainer_Body {
+    flex-grow:1;
+    border: 0.5px solid var(--col_border);
+    border-left: 0px;
+    border-right: 0px;
+    
+    
+    
+    overflow-y: scroll;
+    
+}
+
+.ContentContainer_Body::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: transparent
+}
+.ContentContainer_Body::-webkit-scrollbar-thumb {
+    width: 0.5rem;
+    background-color: var(--col_border);
+    border-radius: 0px;
+}

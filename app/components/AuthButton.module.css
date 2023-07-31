@@ -1,0 +1,30 @@
+.buttonBody{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    
+    padding: 0.5rem;
+    width: 100%;
+
+    font-size: 1rem;
+    /*border: 1px solid var(--col_border);*/
+    border-radius: 0.3rem;
+
+    /*background-color: var(--col_bg);*/
+    color: var(--col_text);
+}
+
+.buttonBody:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 0.5rem 0.1rem hsla(0, 0%, 100%, 20%);
+    background-color: var(--col_bg-active)
+}
+
+.buttonBody:active {
+    box-shadow: none;
+}
+
+.icon {
+    fill: var(--col_border);
+}

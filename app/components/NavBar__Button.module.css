@@ -1,0 +1,42 @@
+.Button__Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    
+    box-sizing: content-box;
+    
+    height: 2.4rem;
+    width: 100%;
+
+    margin-right: auto;
+
+    /*border-width: 1px 1px 1px 1px;
+    border-color: var(--col_border);
+    border-style:solid;
+    */
+    background-color: var(--col_bg);
+    border-radius: 0rem;
+
+    user-select: none;
+}
+
+.Button__Text {
+    border-bottom: 1px solid transparent;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .Button__Body:hover {
+        background-color: var(--col_bg-hover);
+        cursor: pointer;
+        
+    }
+    .Button__Body:hover Button__Text {
+        color: var(--col_text-highlight);
+        border-bottom: 1px solid var(--col_text-highlight);
+    }
+}
+
+.Button__Body:active {
+    background-color: var(--col_bg-active)
+}

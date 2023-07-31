@@ -1,0 +1,41 @@
+
+.ToggleButton__Body {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    flex-basis: 5rem;
+    flex-grow:1;
+
+
+    padding: 0.5rem;
+    border: 2px solid var(--col_page-color); 
+    border-radius: 0.5rem;
+
+    user-select: none;
+}
+
+/* .ToggleButton__Body::after {
+    content: '';
+    position: absolute;
+    top:1px;
+    left: 1px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    border: 2px solid black;
+} */
+
+
+@media(hover: hover) and (pointer: fine) {
+    .ToggleButton__Body:hover {
+        cursor: pointer;
+    }
+}
+
+.selectLeft {
+    background: linear-gradient(to right, var(--col_border), var(--col_bg) 50%) content-box;
+
+}
+
+.selectRight {
+    background: linear-gradient(to left, var(--col_border), var(--col_bg) 50%) content-box;
+}

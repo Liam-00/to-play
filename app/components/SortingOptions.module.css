@@ -1,0 +1,25 @@
+.SortingOptions__Body{
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    width: 100%;
+    
+    user-select: none;
+
+    padding: 0.5rem;
+
+    border-radius: 0.5rem;
+}
+
+.SortingOptions__ComboBody {
+    flex-grow:1;
+}
+
+.SortingOptions__ToggleBody {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+}

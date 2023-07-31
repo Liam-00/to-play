@@ -1,0 +1,13 @@
+.Navbar_body {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+}
+
+.NavContainer__button_divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--col_page-color);
+}

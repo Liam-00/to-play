@@ -1,0 +1,12 @@
+.GameList_Body {
+    box-sizing: border-box;
+
+    display: grid;
+    width: 100%;
+
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    justify-content: center;
+    border: 2px solid hsla(0, 0%, 100%, 10%);
+    border-left: 0px;
+    border-right: 0px;
+}
