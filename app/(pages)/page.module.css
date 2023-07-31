@@ -1,0 +1,69 @@
+.page_body {
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "content login";
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 80rem;
+    height: 100dvh;
+
+    margin: 0 auto;
+    
+    padding: 0.5rem;
+
+    /*background-color: var(--col_bg-hover);*/
+}
+
+@media (max-width: 900px) {
+    .page_body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas:
+            "content"
+            "login";
+
+    }
+}
+
+
+.box {
+    grid-area: content;
+
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+    padding: 1rem;
+    
+    border-radius:0.5rem;
+    
+    
+}
+
+.login_block {
+    grid-area: login;
+    align-self: center;
+    
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+    
+}
+
+
+.big_text1 {
+    display: block;
+    font-size: 1.9rem;
+}
+
+.big_text2 {
+    font-size: 1rem;
+    
+}
+
