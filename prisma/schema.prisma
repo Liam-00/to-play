@@ -60,12 +60,12 @@ model Game {
   id          String     @id @default(cuid())
   igdbid      Int        @unique
   title       String
-  releasedate Int
+  releasedate DateTime?
   publisher   String[]
   developer   String[]
   genres      String[]
-  description String
-  cover       String
+  description String?
+  cover       String?
   listgames   ListGame[]
 }
 
@@ -77,7 +77,7 @@ model ListGame {
   listid        String
   
   status        Status
-  dateadded     DateTime  @default(now())
+  dateadded     DateTime @default(now())
   datestarted   DateTime?
   datecompleted DateTime?
 
