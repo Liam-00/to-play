@@ -1,9 +1,9 @@
-import type { AppGameType } from "@/app/types/types"
-import type { Game, GameList, ListGame, Status } from "@prisma/client";
-import { getIgdbGame } from "./igdbApiTools"
+import type { GameType, ListGameType, GameListType, IgdbGameType } from "@/app/types/types"
+import type { Game, GameList, ListGame, Status } from "@prisma/client"
 
-import { prisma } from "./prisma_client";
-import App from "next/app";
+import { getIgdbGame } from "./igdbApiTools"
+import { prisma } from "./prisma_client"
+import App from "next/app"
 
 type idModeType = 'IGDB' | 'DB'
 
@@ -13,8 +13,8 @@ Functions that retrieve data return the data or null. Others return true on comp
 */
 
 //create
-const addGameToDb = async (igdbGameId: number): Promise<boolean> => {
-    const igdbGameData_object: AppGameType = await getIgdbGame(igdbGameId)
+export const addGameToDb = async (igdbGameId: number): Promise<boolean> => {
+    const igdbGameData_object: IgdbGameType = await getIgdbGame(igdbGameId)
 
     const dbGameQueryResponse: Game | null = await readGameFromDb(igdbGameId, 'IGDB')
 
@@ -28,8 +28,8 @@ const addGameToDb = async (igdbGameId: number): Promise<boolean> => {
                     publisher: igdbGameData_object.publisher,
                     developer: igdbGameData_object.developer,
                     genres: igdbGameData_object.genres,
-                    description: igdbGameData_object.description,
-                    cover: igdbGameData_object.cover
+                    description: igdbGameData_object.description ?? "",
+                    cover: igdbGameData_object.cover ?? ""
                 }
             })
  
@@ -52,9 +52,9 @@ const addGameToDb = async (igdbGameId: number): Promise<boolean> => {
 }
 
 //read
-const readGameFromDb = async (id: number | string, mode: idModeType): Promise<Game | null> => {
+export const readGameFromDb = async (id: number | string, mode: idModeType): Promise<GameType | null> => {
     
-    let dbGameQueryResponse: Game | null
+    let dbGameQueryResponse: Game | null = null
     
     if (mode === 'IGDB') {
         dbGameQueryResponse = await prisma.game.findUnique({
@@ -72,28 +72,44 @@ const readGameFromDb = async (id: number | string, mode: idModeType): Promise<Ga
         
     }
 
-    return dbGameQueryResponse
+    let game: GameType | null = null
 
+    if (dbGameQueryResponse) {
+        game = {
+            id: dbGameQueryResponse.id,
+            title: dbGameQueryResponse.title,
+            igdbid: dbGameQueryResponse.igdbid,
+            cover: dbGameQueryResponse.cover ?? null,
+            releasedate: dbGameQueryResponse.releasedate ?? null,
+            publisher: [...dbGameQueryResponse.publisher],
+            developer: [...dbGameQueryResponse.developer],
+            genres: [...dbGameQueryResponse.genres],
+            description: dbGameQueryResponse.description ?? null,
+            storyline: null
+        }
     
+    }
+
+    return game    
 }
 
 //update
-const updateGameInDb = async (igdbId: number): Promise<boolean> => {
+export const updateGameInDb = async (igdbId: number): Promise<boolean> => {
     try {
-        const igdbGameData_object: AppGameType = await getIgdbGame(igdbId)
+        const igdbGameData: IgdbGameType = await getIgdbGame(igdbId)
         
         await prisma.game.update({
             where: {
                 igdbid: igdbId,
             },
             data: {
-                title: igdbGameData_object.title,
-                releasedate: igdbGameData_object.releasedate,
-                publisher: igdbGameData_object.publisher,
-                developer: igdbGameData_object.developer,
-                genres: igdbGameData_object.genres,
-                description: igdbGameData_object.description,
-                cover: igdbGameData_object.cover
+                title: igdbGameData.title,
+                releasedate: igdbGameData.releasedate,
+                publisher: igdbGameData.publisher,
+                developer: igdbGameData.developer,
+                genres: igdbGameData.genres,
+                description: igdbGameData.description,
+                cover: igdbGameData.cover
             }
         })
 
@@ -112,15 +128,15 @@ const updateGameInDb = async (igdbId: number): Promise<boolean> => {
 */
 
 //create
-const addListGameToDb = async (listId: string, gameId: string) => {
+export const addListGameToDb = async (listId: string, gameId: string): Promise<boolean> => {
     
     //check that game exists in db
-    let game_object: Game | null = await readGameFromDb(gameId, 'DB')
-    if (!game_object) throw new Error("Game does not exist in database")
+    let game: GameType | null = await readGameFromDb(gameId, 'DB')
+    if (!game) throw new Error("Game does not exist in database")
     
     //check that list exists in db
-    let gameList_object: GameList | null = await readGameListFromDb(listId)
-    if (!gameList_object) throw new Error("GameList does not exist in database")
+    let gameList: GameListType | null = await readGameListFromDb(listId)
+    if (!gameList) throw new Error("GameList does not exist in database")
     
     
     //check that listGame doesn't already exist
@@ -132,8 +148,8 @@ const addListGameToDb = async (listId: string, gameId: string) => {
     try {
         let newListGame_object = await prisma.listGame.create({
             data: {
-                gameid: game_object.id,
-                listid: gameList_object.id,
+                gameid: game.id,
+                listid: gameList.id,
                 status: 'NotStarted',
             }
         })
@@ -148,52 +164,76 @@ const addListGameToDb = async (listId: string, gameId: string) => {
 }
 
 //read
-const readListGameFromDb = async (listId: string, gameId: string): Promise<ListGame | null> => {
+export const readListGameFromDb = async (listId: string, gameId: string): Promise<ListGameType | null> => {
+
+    let listGame
 
     try {
-        let listGame_object = await prisma.listGame.findUnique({
+        listGame = await prisma.listGame.findUnique({
             where: {
                 gameid_listid: {
                     gameid: gameId,
                     listid: listId
                 }
+            },
+            include: {
+                game: true
             }
         })
-
-        return listGame_object
-    
     } catch (e) {
-        throw new Error("Could not read ListGame from database")
-    
-    } 
+        throw new Error("Failed to retieve ListGame")
+    }
 
+    let listGameResult: ListGameType | null = null
+
+    if (!listGame) return listGameResult
+
+    listGameResult = {
+            id: listGame.game.id,
+            title: listGame.game.title,
+            igdbid: listGame.game.igdbid,
+            cover: listGame.game.cover ?? null,
+            releasedate: listGame.game.releasedate ?? null,
+            publisher: [...listGame.game.publisher],
+            developer: [...listGame.game.developer],
+            genres: [...listGame.game.genres],
+            description: listGame.game.description ?? null,
+            storyline: null,
+            status: listGame.status,
+            dateadded: listGame.dateadded ?? null,
+            datestarted: listGame.datestarted ?? null,
+            datecompleted: listGame.datecompleted ?? null
+    }    
+    
+    return listGameResult
+   
 }
 
 //update
-const updateListGameInDb = async (listId:string, gameId:string, status: Status) => {
+export const updateListGameInDb = async (listId:string, gameId:string, status: Status): Promise<boolean> => {
     
     //get object to update
-    let listGame_object = await readListGameFromDb(listId, gameId)
-    if (!listGame_object) throw new Error("ListGame does not exist")
+    let listGame = await readListGameFromDb(listId, gameId)
+    if (!listGame) throw new Error("ListGame does not exist")
 
     //update data
     switch (status) {
         case "Completed":
-            listGame_object.datecompleted = new Date()
+            listGame.datecompleted = new Date()
             break;
         case "InProgress":
-            listGame_object.datestarted = new Date()
-            listGame_object.datecompleted = null
+            listGame.datestarted = new Date()
+            listGame.datecompleted = null
             break;
         case "NotStarted":
             //listGame_object.dateadded = new Date()
-            listGame_object.datestarted = null
-            listGame_object.datecompleted = null
+            listGame.datestarted = null
+            listGame.datecompleted = null
 
         break;
     }
 
-    listGame_object.status = status
+    listGame.status = status
 
     try {
         //update object in db with new data
@@ -204,7 +244,11 @@ const updateListGameInDb = async (listId:string, gameId:string, status: Status) 
                     listid: listId
                 }
             },
-            data: listGame_object
+            data: {
+                status: listGame.status as Status,
+                datecompleted: listGame.datecompleted,
+                datestarted: listGame.datestarted
+            }
         })
     
     } catch (e) {
@@ -217,7 +261,7 @@ const updateListGameInDb = async (listId:string, gameId:string, status: Status) 
 }
 
 //delete
-const deleteListGameFromDb = async (listId:string, gameId:string) => {
+export const deleteListGameFromDb = async (listId:string, gameId:string) => {
     
     try {
         let deleted_listGame_object = await prisma.listGame.delete({
@@ -241,7 +285,7 @@ const deleteListGameFromDb = async (listId:string, gameId:string) => {
 
 //====List====
 //create
-const addGameListToDb = async (userId: string, name: string): Promise<boolean> => {
+export const addGameListToDb = async (userId: string, name: string): Promise<boolean> => {
     try {
         prisma.gameList.create({
             data: {
@@ -264,8 +308,8 @@ const addGameListToDb = async (userId: string, name: string): Promise<boolean> =
 }
 
 //read
-const readGameListFromDb = async (listId:string): Promise<GameList | null> => {
-    let gameList_object: GameList | null = await prisma.gameList.findUnique({
+export const readGameListFromDb = async (listId:string): Promise<GameListType | null> => {
+    let igdbGameList = await prisma.gameList.findUnique({
         where: {
             id: listId
         },
@@ -279,19 +323,52 @@ const readGameListFromDb = async (listId:string): Promise<GameList | null> => {
         }
     })
 
-    return gameList_object
+    if (!igdbGameList) throw new Error("Gamelist not found in database")
+
+    console.log(JSON.stringify(igdbGameList, null, 2))
+
+    let gamelist: ListGameType[] = igdbGameList.games.map(
+        (listGame: any) => {
+            return {
+                id: listGame.game.id,
+                status: listGame.status,
+                dateadded: listGame.dateadded ?? null,
+                datestarted: listGame.datestarted ?? null,
+                datecompleted: listGame.datecompleted ?? null,
+                title: listGame.game.title,
+                igdbid: listGame.game.igdbid,
+                cover: listGame.game.cover ?? null,
+                releasedate: listGame.game.releasedate ?? null,
+                publisher: [...listGame.game.publisher],
+                developer: [...listGame.game.developer],
+                genres: [...listGame.game.genres],
+                description: listGame.game.description ?? null,
+                storyline: listGame.game.storyline ?? null
+            }
+        }
+    )
+
+
+    return {
+        id: igdbGameList.id,
+        title: igdbGameList.name,
+        games: gamelist
+    }
 
 }
 
 //update
-const updateGameListInDb = async (listId: string, data: {}): Promise<boolean> => {
+export const updateGameListInDb = async (listId: string, name: string): Promise<boolean> => {
     try {
         await prisma.gameList.update({
             where: {
                 id: listId,
             },
-            data: data
+            data: {
+                name: name
+            }
         })
+
         return true
     
     } catch(e) {
@@ -302,7 +379,7 @@ const updateGameListInDb = async (listId: string, data: {}): Promise<boolean> =>
 }
 
 //delete
-const deleteGameListInDb = async (listId: string) => {
+export const deleteGameListInDb = async (listId: string) => {
     try {
         await prisma.gameList.delete({
             where : {
@@ -313,5 +390,26 @@ const deleteGameListInDb = async (listId: string) => {
     } catch(e) {
         throw new Error("Failed to delete GameList in database")
 
+    }
+}
+
+//====User====
+
+export const readUserFromDb = async (email:string) => {
+    try {
+        let user = prisma.user.findUnique({
+            where: {
+                email: email
+            },
+            include: {
+                lists: true
+            }
+        })
+
+        return user
+    
+    } catch (e) {
+        throw new Error("Could not get user from database")
+    
     }
 }

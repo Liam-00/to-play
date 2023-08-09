@@ -1,7 +1,7 @@
 import { headers } from "next/dist/client/components/headers"
 import { getTokenFromFile } from "./igdbTwitchTokenValidation"
 import 'dotenv/config'
-import type { AppGameType, IgdbGameResponseType } from "@/app/types/types"
+import type { GameType, IgdbGameResponseType, IgdbGameType } from "@/app/types/types"
 
 
 const makeIgdbRequest = async (endpoint:string, request_body_string:string) => {
@@ -41,7 +41,7 @@ const buildIgdbCoverUrl = (coverId: string) => {
 }
 
 
-const getIgdbGame = async (igdbId: number): Promise<AppGameType> => {
+const getIgdbGame = async (igdbId: number): Promise<IgdbGameType> => {
     let igdbApiResponse_object: IgdbGameResponseType = await makeIgdbRequest(
         `games`,
         `
@@ -59,16 +59,16 @@ const getIgdbGame = async (igdbId: number): Promise<AppGameType> => {
         `
     )
     
-    let new_game_object: AppGameType = {
+    let new_game_object: IgdbGameType = {
         igdbid: igdbApiResponse_object.id,
         title: igdbApiResponse_object.name,
-        releasedate: igdbApiResponse_object.first_release_date ?? 0,
-        cover: igdbApiResponse_object.cover?.image_id ? buildIgdbCoverUrl(igdbApiResponse_object.cover.image_id) : '', 
+        releasedate: igdbApiResponse_object.first_release_date ? new Date(igdbApiResponse_object.first_release_date) : null,
+        cover: igdbApiResponse_object.cover?.image_id ? buildIgdbCoverUrl(igdbApiResponse_object.cover.image_id) : null, 
         publisher: [],
         developer: [],
         genres: [],
-        description: igdbApiResponse_object.summary ?? '',
-        storyline: igdbApiResponse_object.storyline ?? ''
+        description: igdbApiResponse_object.summary ?? null,
+        storyline: igdbApiResponse_object.storyline ?? null
     }
     
     //retrieve companies from response and populate field in new game object
