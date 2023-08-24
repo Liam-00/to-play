@@ -1,0 +1,29 @@
+.toast__body {
+    position: absolute;
+    left: 1rem; bottom: 1rem;
+
+    padding: 1rem;
+
+
+    background-color: var(--col_bg);
+    z-index: 999;
+    display: none;
+}
+
+
+.fade_in {
+    animation-name: fadein;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    display: unset;
+}
+
+@keyframes fadein {
+    from {
+        transform: rotateX(90deg);
+    }
+
+    to {
+        transform: rotateX(0deg);
+    }
+}

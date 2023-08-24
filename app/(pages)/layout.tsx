@@ -1,6 +1,6 @@
 import '@/app/globals.css'
 import style from './layout.module.css'
-
+import { ToastProvider } from './ToastProvider'
 export const metadata = {
   title: 'togame',
   description: '',
@@ -15,7 +15,7 @@ export default function RootLayout({ children, }: { children?: React.ReactNode }
       </head>
       <html lang="en">
         <body>
-          {children}
+          <ToastProvider>{children}</ToastProvider>
         </body>
       </html>
     </>
